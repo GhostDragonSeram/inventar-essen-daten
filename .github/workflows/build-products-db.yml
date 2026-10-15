@@ -1,0 +1,32 @@
+name: Produktdatenbank bauen
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'   # jeden Montag, 03:00 UTC
+  workflow_dispatch:       # zusätzlich von Hand startbar
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Auszug bauen
+        run: python tools/build_products_db.py --out dist
+
+      - name: Als Release "data" veröffentlichen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view data >/dev/null 2>&1 || gh release create data \
+            --title "Produktdatenbank" \
+            --notes "Auszug aus Open Food Facts (nur Deutschland). Lizenz: Open Database License (ODbL). Wird wöchentlich automatisch aktualisiert."
+          gh release upload data dist/products.sqlite.gz dist/version.json --clobber
