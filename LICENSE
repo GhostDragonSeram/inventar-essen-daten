@@ -1,0 +1,20 @@
+Lizenzhinweise
+==============
+
+Produktdaten (Release „data“, products.sqlite und abgeleitete Dateien)
+----------------------------------------------------------------------
+Die Daten stammen von Open Food Facts (https://world.openfoodfacts.org)
+und stehen unter der Open Database License (ODbL) 1.0:
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Einzelne Inhalte der Datenbank stehen unter der Database Contents License
+(DbCL) 1.0: https://opendatacommons.org/licenses/dbcl/1-0/
+
+Quellenangabe: „Daten: © Open Food Facts-Mitwirkende, ODbL“.
+Abgeleitete Datenbanken, die weitergegeben werden, müssen ebenfalls unter
+der ODbL stehen.
+
+Skripte (tools/) und Workflows
+------------------------------
+© Christophs IT-Solutions. Alle Rechte vorbehalten, soweit nicht anders
+angegeben.
